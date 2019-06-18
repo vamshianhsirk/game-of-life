@@ -12,7 +12,7 @@ stage('Build Step')
 			{
 				// properties([gitLabConnection(''), parameters([string(defaultValue: '1.0', description: '', name: 'SERVE_VERSION_NUMBER', trim: false)])])
 				sh 'echo ${SERVE_VERSION_NUMBER}'
-				// sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent versions:set -DnewVersion=${SERVE_VERSION_NUMBER}'
+				 sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent versions:set -DnewVersion=${SERVE_VERSION_NUMBER}'
 			}
 		}
 	}
@@ -20,7 +20,7 @@ stage('Build Step')
 	{
 		withMaven(globalMavenSettingsConfig: 'MavenSettings', maven: 'Maven3', mavenSettingsConfig: 'MavenSettings', tempBinDir: '')
 		{
-		        sh 'mvn -s $MavenSettings clean versions:set -DnewVersion=${SERVE_VERSION_NUMBER}'
+		        sh 'mvn -s $Maven_settings clean versions:set -DnewVersion=${SERVE_VERSION_NUMBER}'
 				sh 'mvn install sonar:sonar -Dsonar.host.url=http://sonarqube-core:9000/sonarqube -Dsonar.login=a22c81b6684773e441e7892446ec6e5eb82e81b2'
 			   // sh 'curl -v -u vyenmang:password --upload-file target/gameoflife-${SERVE_VERSION_NUMBER}.war http://nexus3-core:8081/nexus3/repository/maven-releases/com/productionline/gameoflife-${SERVE_VERSION_NUMBER}.war'
 		}
