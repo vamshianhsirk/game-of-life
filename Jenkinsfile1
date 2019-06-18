@@ -22,7 +22,7 @@ stage('Build Step')
 		{
 		        sh 'mvn -s $Maven_settings clean versions:set -DnewVersion=${SERVE_VERSION_NUMBER}'
 				sh 'mvn install sonar:sonar -Dsonar.host.url=http://sonarqube-core:9000/sonarqube -Dsonar.login=a22c81b6684773e441e7892446ec6e5eb82e81b2'
-			    sh 'curl -v -u vyenmang:Z#8ib9tr --upload-file target/gameoflife-${SERVE_VERSION_NUMBER}.war http://nexus3-core:8081/nexus3/repository/maven-releases/com/productionline/gameoflife-${SERVE_VERSION_NUMBER}.war'
+			   // sh 'curl -v -u vyenmang:password --upload-file target/gameoflife-${SERVE_VERSION_NUMBER}.war http://nexus3-core:8081/nexus3/repository/maven-releases/com/productionline/gameoflife-${SERVE_VERSION_NUMBER}.war'
 		}
 	}
 }
