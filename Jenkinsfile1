@@ -1,8 +1,15 @@
 node {
-
+parameters { 
+        string(name: 'SERVE_VERSION_NUMBER', defaultValue: '1.0', description: 'NEEDS TO BE SET!') 
+     
+    }
+    
 stage('SCM') {
 git 'https://github.com/asquarezone/game-of-life.git'
 }
+
+
+
 
 stage('Build Step')
 	{
